@@ -11,7 +11,7 @@ variable "nodes_per_az" {
 }
 
 variable "instance_type" {
-  default = "m5.large"
+  default = "m7g.2xlarge"
 }
 
 variable "az_span" {
