@@ -36,8 +36,7 @@ env:
   TF_ACC_KUBERNETES_RC_REPLICAS: 50
 
 jobs:
-  prepare-gke-environment:
-    name: "Prepare GKE cluster"
+  acceptance_tests:
     permissions:
       contents: "read"
       id-token: "write"
