@@ -64,6 +64,10 @@ jobs:
         run: |
           terraform init
           terraform apply -auto-approve
+      - name: "Initialize gcloud SDK"
+        run: |
+          gcloud init
+          gcloud info
       - name: Run Acceptance Test Suite
         env:
           KUBE_CONFIG_PATH: ${{ env.KUBECONFIG }}
