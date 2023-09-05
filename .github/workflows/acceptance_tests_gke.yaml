@@ -17,7 +17,7 @@ on:
         default: 2
       nodeMachineType:
         description: The type of GKE instance to use for cluster nodes
-        default: t2a-standard-8
+        default: e2-standard-8
       runTests:
         description: The regex passed to the -run option of `go test`
         default: ^TestAcc
@@ -32,8 +32,6 @@ env:
   GOOGLE_ZONE: ${{github.event.inputs.zone}}
   USE_GKE_GCLOUD_AUTH_PLUGIN: True
   KUBECONFIG: ${{ github.workspace }}/kubernetes/test-infra/gke/kubeconfig
-  KUBE_CONFIG_PATH: ${{ github.workspace }}/kubernetes/test-infra/gke/kubeconfig
-  TF_ACC_KUBERNETES_RC_REPLICAS: 50
 
 jobs:
   acceptance_tests:
@@ -41,8 +39,6 @@ jobs:
       contents: "read"
       id-token: "write"
     runs-on: ubuntu-latest
-    env:
-      KUBECONFIG: ${{ github.workspace }}/kubernetes/test-infra/gke/kubeconfig
     steps:
       - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # v3.5.3
       - name: Set up Go
